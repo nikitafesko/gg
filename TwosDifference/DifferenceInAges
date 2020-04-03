@@ -1,0 +1,44 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace ConsoleApp2
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int[] array = { 1, 2, 3, 4, 5, 6, 7 };
+            Console.WriteLine(TwosDifference(array));
+            Console.WriteLine(DifferenceInAges(array));
+        }
+        public static (int, int)[] TwosDifference(int[] array)
+        {
+            Array.Sort(array);
+            List<int> resList = new List<int>();
+
+            for (int i = 0; i < array.Length; i++)
+            {
+                for (int j = 0; j < array.Length; j++)
+                {
+                    if (array[i] + 2 == array[j])
+                    {
+                        resList.Add(array[i]);
+                        resList.Add(array[j]);
+                    }
+                }
+            }
+
+            (int, int)[] resArray = new (int, int)[(resList.Count) / 2];
+
+            for (int i = 0, j = 0; i < resList.Count - 1; i += 2, j++)
+            {
+                resArray[j].Item1 = resList[i];
+                resArray[j].Item2 = resList[i + 1];
+            }
+            return resArray;
+        }
+        public static int[] DifferenceInAges(int[] ages) => new int[] { ages.Min(), ages.Max(), ages.Max() - ages.Min() };
+    }
+}
+

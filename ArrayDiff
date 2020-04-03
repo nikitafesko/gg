@@ -1,0 +1,57 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Collections;
+
+
+namespace ConsoleApp1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int[] a = new int[] { 2 };
+            int[] b = new int[] { 1, 2 };
+            ArrayDiff(a, b);
+
+        }
+        public static int[] ArrayDiff(int[] a, int[] b)
+        {
+            int[] e = a.Except(b).Concat(b.Except(a)).ToArray().ToArray();
+            for (int i = 0; i < e.Length; i++)
+            {
+                Console.WriteLine(e);
+            }
+
+            return e;
+        }
+
+        //public static int[] ArrayDiff(int[] a, int[] b)
+        //{
+        //    List<int> c = new List<int>();
+
+        //    int temp = 0;
+        //    for (int i = 0; i < a.Length; i++)
+        //    {
+        //        if(a[i] != b[i])
+        //        {
+        //            c.Add(a[i]);
+        //            temp++;
+        //        }
+        //        if (b[i] != a[i])
+        //        {
+        //            c.Add(b[i]);
+        //            temp++;
+        //        }
+
+        //    }
+        //    int[] d = c.ToArray();
+
+        //    //return a.Where(n => !b.Contains(n)).ToArray();
+        //    return d;
+        //}
+
+    }
+}
+            
